@@ -1,63 +1,82 @@
 ## Theory
 **Introduction:**  
-The boundary between accumulation and depletion is the flat-band voltage and the boundary between depletion and inversion is the threshold voltage.
+MOSFET Parameter Extraction from Output ($I_d$ vs. $V_d$) Characteristics
 <div align="center">
-    <img src="images/tvic.jpg" alt="Threshold Voltage and Inversion charge">  
+    <img src="images/th9.png" alt="Threshold Voltage and Inversion charge">  
       <p><strong>Fig. 1. Threshold Voltage and Inversion charge</strong></p>
 </div>
 
+## Introduction
 
+The **output characteristic** plot ($I_d$ vs. $V_d$) is a fundamental MOSFET measurement. It shows how the drain current ($I_d$) varies with the drain-source voltage ($V_{ds}$), for several different constant gate-source voltages ($V_{gs}$).
 
-  
-
-### MOS Capacitor's three regimes-Accumulation, Depletion, Inversion
-
-A MOS Capacitor can be in three regimes: accumulation, depletion, and inversion. The boundary between accumulation and depletion is the flat-band voltage, and the boundary between depletion and inversion is the threshold voltage. The flat-band voltage, denoted as V<sub>fb</sub> or V<sub>bi</sub>, is defined as φ<sub>m</sub> - φ<sub>s</sub>, where φ<sub>m</sub> is the work function of the metal and φ<sub>s</sub> is the work function of the semiconductor substrate.
-
-At the flat-band voltage, the bands are flat, resulting in an electric field of zero throughout the semiconductor. The hole concentration p equals the acceptor concentration, and the charge density ρ is zero.
-
-Accumulation occurs when the gate voltage V is negative, attracting holes to the oxide interface. This causes the valence band to bend up towards the Fermi energy, increasing the hole concentration p near the oxide interface. The Fermi energy in the metal (represented by the black line on the left in the band diagram) moves up for negative voltages, indicating an increase in electron energy.
-
-In the depletion regime, a positive gate voltage pushes mobile holes away from the oxide, leaving negatively charged acceptors behind. The valence band bends away from the Fermi energy at the oxide, resulting in a lower hole concentration near the oxide. The negative charge in the semiconductor is balanced by a positive charge on the metal surface, as indicated by the charge plot arrow. As the gate voltage increases positively, the depletion width grows, and the bands bend further down. Eventually, the conduction band gets closer to the Fermi energy than the valence band, leading to weak inversion where n > p near the oxide. Strong inversion occurs when n = N<sub>A</sub> (acceptor concentration) at the oxide interface, at the threshold voltage V<sub>T</sub>.
-
-At V > V<sub>T</sub>, an inversion channel forms at the semiconductor/oxide interface, characterized by a layer of mobile electrons. In the inversion state, the electric field in the semiconductor remains constant, while it increases within the oxide layer.
-
-### Determining the band bending
-
-To calculate the band bending, we start with Gauss's law,
-
-$$\\begin{equation} \\nabla \\cdot \\vec{E} = \\frac{\\rho}{\\epsilon\_s\\epsilon\_0}. \\end{equation}$$
-
-$$Combining \ this \ with \ \\vec{E}=-\\nabla V \ yields \ the \ Poisson \ equation,$$
-
-$$\\begin{equation} \\nabla^2V = -\\frac{\\rho}{\\epsilon\_s\\epsilon\_0}, \\end{equation}$$
-
-where, for a MOS capacitor with a p-type substrate, the charge density is 
-$$\\rho = e\\left(-N\_A-n+p\\right)$$ and the charge carrier concentrations are,
-
-
-$$\\begin{equation} n=N\_c(300)\\left(\\frac{T}{300}\\right)^{3/2}\\exp\\left(\\frac{E\_F-E\_c}{k\_BT}\\right)\\qquad \\text{and}\\qquad p=N\_v(300)\\left(\\frac{T}{300}\\right)^{3/2}\\exp\\left(\\frac{E\_v-E\_F}{k\_BT}\\right). \\end{equation}$$
-
-Using the relation $$e\\frac{dV}{dx} = -\\frac{E\_v}{dx}$$ the Poisson equation can be written as a second order differential equation for E<sub>v(x)</sub>,
-
-$$ \\begin{equation} \\frac{d^2E\_v}{dx^2} = \\frac{e^2}{\\epsilon\_s\\epsilon\_0}\\left(-N\_A-N\_c\\exp\\left(\\frac{-E\_g-E\_v}{k\_BT}\\right)+N\_v\\exp\\left(\\frac{E\_v}{k\_BT}\\right)\\right). \\end{equation}$$
-
-### Numerical
-
-This differential equation was solved numerically using the shooting method. First the maximum depletion width max(x<sub>p</sub>) and the threshold voltage V<sub>T</sub> are estimated using the analytic formulas from the depletion approximation.
+This family of curves is essential for extracting parameters that model the transistor's behavior in the **linear (or triode) region** and the **saturation region**.
 
 
 
-$$\\begin{equation} x\_p = 2\\sqrt{\\frac{\\epsilon\_{\\text{semi}}\\epsilon\_0 k\_BT}{e^2N\_A}\\ln\\left(\\frac{N\_A}{n\_i}\\right)}. \\end{equation}$$ 
+The plot is typically divided into two main regions:
+1.  **Linear/Triode Region (Low $V_{ds}$):** The device acts like a voltage-controlled resistor. $I_d$ rises linearly (or near-linearly) with $V_{ds}$.
+2.  **Saturation Region (High $V_{ds}$):** The channel "pinches off," and the device acts like a voltage-controlled current source. Ideally, $I_d$ would be constant, but real-world effects cause it to slope upwards.
 
-$$\\begin{equation} V\_T = \\frac{2t\_{ox}}{\\epsilon\_{ox}}\\sqrt{\\epsilon\_{\\text{semi}}N\_Ak\_BT \\ln \\left (\\frac{N\_A}{n\_i} \\right )} +\\frac{2k\_BT}{e} \\ln \\left (\\frac{N\_A}{n\_i} \\right ) +V\_{fb} \\end{equation}$$
+---
 
-Far from the oxide, the valence band satisfies the conditions $$E_v=k_BTln(N_AN_v)=E_{v0}E_v=k_BTln⁡(\frac{N_A}{N_v})=E_{v0}$$ and $$dE_vdx=0\frac{dE_v}{dx}=0$$. To determine the band bending, we start a distance of 1.8x<sub>p</sub> from the oxide with $$E\_{v} = k\_BT\\ln\\left(\\frac{N\_A}{N\_v}\\right)=E\_{v0}$$ and a small value of $$dE_vdx=0\frac{dE_v}{dx}=0$$. The Poisson equation is integrated numerically using the midpoint method until the semiconductor oxide interface. This gives us the voltage V<sub>s</sub> at the semiconductor/oxide interface and the electric field E<sub>s</sub> at that point. The voltage on the gate is,
+## 1. Saturation Region - Channel-Length Modulation (LEVEL 1, 2, 3)
 
+In the simple (LEVEL 1) model, the saturation current is assumed to be constant and independent of $V_{ds}$. In reality, the $I_d$ curves slope gently upwards.
 
-$$\\begin{equation} V = \\frac{\\epsilon\_{\\text{semi}}E\_s}{\\epsilon\_{\\text{ox}}}t\_{\\text{ox}}+V\_s. \\end{equation}$$
+* **Physical Cause:** This is due to **Channel-Length Modulation (CLM)**, an effect analogous to the Early effect in BJTs. As $V_{ds}$ increases, the depletion region at the drain end of the channel widens, which moves the "pinch-off" point slightly toward the source. This *reduces* the effective channel length ($L_{eff}$). Since $I_d$ is inversely proportional to $L_{eff}$, the current increases slightly.
 
-This is the correct gate voltage for the boundary conditions we chose on the right, but generally, it may not be the desired gate voltage. The starting position of integration is then adjusted either to the right or left, and the integration process is repeated until the calculated voltage, obtained through numerical integration, matches V<sub>shoot</sub>. The simulation produces incorrect results if the valence band or conduction band approach within approximately 3k<sub>BT</sub> from the Fermi energy. This limitation arises because the formulas for nnn and ppp are valid only when the valence and conduction bands are sufficiently far from the Fermi energy.
+* **SPICE Parameter:** `LAMBDA` (Channel-Length Modulation Parameter)
+    * The LEVEL 1 model modifies the saturation current:
+        $$I_d = I_{d,sat} \cdot (1 + \lambda \cdot V_{ds})$$
+
+* **Extraction Method:**
+    1.  For each $I_d$ curve (at a constant $V_{gs}$), draw a straight-line tangent along the sloped portion in the saturation region.
+    2.  Extrapolate all these tangent lines backward. They will ideally converge at a single point on the negative $V_{ds}$ axis.
+    3.  This intercept is the **Early Voltage ($VAF$ or $V_A$)**.
+    4.  The `LAMBDA` parameter is the inverse of the Early Voltage:
+        $$\lambda = \frac{1}{VAF}$$
+
+---
+
+## 2. Linear Region - Parasitic Resistances (LEVEL 3, 6)
+
+The simple LEVEL 1 model assumes the "on-resistance" ($R_{on}$) at very low $V_{ds}$ is determined *only* by the ideal channel. In reality, parasitic resistances from the source and drain contacts/regions add to this.
+
+* **Physical Cause:** There is a physical, ohmic resistance in the source and drain regions ($R_s$ and $R_d$) that is in series with the ideal MOSFET channel.
+* **SPICE Parameters:** `RD` (Drain Resistance), `RS` (Source Resistance)
+* **Effect on Plot:** These resistances "linearize" the $I_d-V_d$ curve near the origin. The slope of the curve at $V_{ds} \approx 0$ is the total on-resistance ($R_{on}$).
+    $$R_{on} = \frac{V_{ds}}{I_d} = R_{channel} + RD + RS$$
+* **Extraction Method:**
+    1.  Measure $R_{on}$ (the slope near the origin) for several different, high $V_{gs}$ values.
+    2.  The channel resistance ($R_{channel}$) *decreases* as $V_{gs}$ increases, while `RD` and `RS` are constant.
+    3.  By plotting $R_{on}$ (y-axis) vs. a function of the gate voltage (e.g., $1/(V_{gs} - VTO)$) (x-axis), a straight line is obtained.
+    4.  The y-intercept of this plot (where the channel resistance term goes to zero) gives the sum of the parasitic resistances, **`RD + RS`**.
+    5.  (Separate `RD` and `RS` requires more advanced "Kelvin" measurement structures).
+
+---
+
+## 3. Saturation Knee - Velocity Saturation (LEVEL 2, 6)
+
+For short-channel devices, the simple "pinch-off" model (LEVEL 1) breaks down. Carriers reach a maximum speed before the channel pinches off.
+
+* **Physical Cause:** At high electric fields (high $V_{ds}$ over a short $L$), the charge carriers (electrons or holes) reach a maximum scatter-limited velocity and cannot travel any faster.
+* **SPICE Parameter:** `VMAX` (Maximum Drift Velocity)
+* **Effect on Plot:**
+    1.  The "knee" of the curve (transition from linear to saturation) occurs at a *lower* $V_{ds}$ than LEVEL 1 predicts.
+    2.  The saturated $I_d$ becomes more proportional to $(V_{gs} - VTO)$ instead of $(V_{gs} - VTO)^2$.
+* **Extraction Method:** `VMAX` is a physical parameter that is difficult to extract with a simple graphical method. It is primarily a **fitting parameter**. In LEVEL 2 or LEVEL 6 (BSIM), `VMAX` is adjusted in the model until the "knee" of the output curve and the resulting saturation current level match the measured data, especially at high $V_{gs}$.
+
+---
+
+## 4. Curve Spacing - Mobility Degradation (LEVEL 3, 6)
+
+The output plot also clearly *visualizes* the effect of mobility degradation, even though the parameters are typically extracted from the $I_d$ vs. $V_g$ transfer plot.
+
+* **Physical Cause:** At high $V_{gs}$ values, the strong vertical electric field pulls carriers against the silicon-oxide interface. This increases scattering and *reduces* their mobility.
+* **SPICE Parameters:** `THETA` (LEVEL 3), `U0`, `UA`, `UB`... (LEVEL 6/BSIM)
+* **Effect on Plot:** The *vertical spacing* between $I_d$ curves (for constant $V_{gs}$ steps) is *not* constant. At high $V_{gs}$ levels, this spacing "compresses" or gets smaller, indicating a loss of "gain" (transconductance).
+* **Extraction:** These parameters are adjusted using numerical optimization to fit this observed current compression in the high-$V_{gs}$ region of the plot.
 
  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>    
  
