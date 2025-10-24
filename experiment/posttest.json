@@ -1,39 +1,117 @@
-{
-  "version": 2.0,
+
+  {
+	  "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
+    "question": "1. What two quantities are plotted against each other on a MOSFET's forward output characteristic curve?",
+    "answers": {
+      "a": "Drain Current and Gate-Source Voltage",
+      "b": "Drain Current and Drain-Source Voltage",
+      "c": "Gate Current and Gate-Source Voltage",
+      "d": "Drain Current and Substrate Voltage"
     },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    }
+    "correctAnswer": "b",
+    "difficulty": "beginner"
+  },
+  {
+    "question": "2. When measuring the output characteristics, which quantity is stepped and held constant for each individual curve?",
+    "answers": {
+      "a": "The Drain-Source Voltage",
+      "b": "The Gate-Source Voltage",
+      "c": "The Substrate Voltage",
+      "d": "The Temperature"
+    },
+    "correctAnswer": "b",
+    "difficulty": "beginner"
+  },
+  {
+    "question": "3. The upward slope of the drain current in the 'saturation' region (the 'flat' part of the curve) is modeled by which SPICE parameter?",
+    "answers": {
+      "a": "`VTO` (Threshold Voltage)",
+      "b": "`KP` (Transconductance Parameter)",
+      "c": "`LAMBDA` (Channel-Length Modulation)",
+      "d": "`GAMMA` (Body Effect)"
+    },
+    "correctAnswer": "c",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "4. What physical phenomenon does the `LAMBDA` parameter account for?",
+    "answers": {
+      "a": "The reduction of the effective channel length as drain voltage increases.",
+      "b": "The reduction of carrier mobility at high gate voltage.",
+      "c": "The change in threshold voltage due to substrate bias.",
+      "d": "The leakage current when the device is 'off'."
+    },
+    "correctAnswer": "a",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "5. How is the `LAMBDA` parameter (or the related Early Voltage) graphically determined from the output plot?",
+    "answers": {
+      "a": "By finding the slope in the *linear* region near zero drain voltage.",
+      "b": "By extrapolating the saturation region slopes to a common intercept on the negative voltage axis.",
+      "c": "By measuring the voltage of the 'knee' where saturation begins.",
+      "d": "From the vertical spacing between the different curves."
+    },
+    "correctAnswer": "b",
+    "difficulty": "advanced"
+  },
+  {
+    "question": "6. The *slope* of the output curve in the deep *linear* (or ohmic) region, near zero drain voltage, represents what physical characteristic?",
+    "answers": {
+      "a": "The total 'on-resistance' of the device.",
+      "b": "The Early Voltage effect.",
+      "c": "The Body Effect.",
+      "d": "The Threshold Voltage."
+    },
+    "correctAnswer": "a",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "7. Which SPICE parameters are most critical for accurately modeling the 'on-resistance' slope in the linear region?",
+    "answers": {
+      "a": "`VTO` and `GAMMA`",
+      "b": "`RD` and `RS` (Parasitic Resistances)",
+      "c": "`LAMBDA` and `VTO`",
+      "d": "`KP` and `THETA`"
+    },
+    "correctAnswer": "b",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "8. In short-channel models (LEVEL 2/3), what is the primary effect of carrier velocity saturation (`VMAX`) on the output plot?",
+    "answers": {
+      "a": "It makes the saturation slope much steeper (less ideal).",
+      "b": "It causes the current to saturate at a *lower* drain voltage (a 'softer' knee).",
+      "c": "It only affects the 'off' current, not the 'on' current.",
+      "d": "It makes the 'on-resistance' in the linear region much higher."
+    },
+    "correctAnswer": "b",
+    "difficulty": "advanced"
+  },
+  {
+    "question": "9. How does mobility degradation (a high gate voltage effect) visually appear on the output characteristics plot?",
+    "answers": {
+      "a": "All the curves shift to the right.",
+      "b": "The *vertical spacing* between curves (for a constant gate voltage step) gets *smaller* at high gate voltages.",
+      "c": "The saturation slope (`LAMBDA`) becomes negative.",
+      "d": "The 'on-resistance' in the linear region disappears."
+    },
+    "correctAnswer": "b",
+    "difficulty": "advanced"
+  },
+  {
+    "question": "10. What is the term for the sharp, uncontrolled increase in drain current that occurs at very high drain-source voltages, which is the final region of the plot?",
+    "answers": {
+      "a": "Saturation",
+      "b": "Cutoff",
+      "c": "Avalanche Breakdown",
+      "d": "Quasi-saturation"
+    },
+    "correctAnswer": "c",
+    "difficulty": "beginner"
+  }
+
   ]
 }
