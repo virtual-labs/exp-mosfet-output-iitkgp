@@ -2,8 +2,8 @@
 **Introduction:**  
 MOSFET Parameter Extraction from Output ($I_d$ vs. $V_d$) Characteristics
 <div align="center">
-    <img src="images/th9.png" alt="Threshold Voltage and Inversion charge">  
-      <p><strong>Fig. 1. Threshold Voltage and Inversion charge</strong></p>
+    <img src="images/th9.png" alt="MOSFET Output Characteristics: Parameter Extraction">  
+      <p><strong>Fig. 1. MOSFET Output Characteristics: Parameter Extraction</strong></p>
 </div>
 
 ## Introduction
