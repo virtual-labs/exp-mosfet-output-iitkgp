@@ -1,0 +1,116 @@
+  {
+	  "version": 2.0,
+  "questions": [
+      {
+    "question": "1. What two quantities are plotted against each other on a MOSFET's forward output characteristic curve?",
+    "answers": {
+      "a": "Drain Current and Gate-Source Voltage",
+      "b": "Drain Current and Drain-Source Voltage",
+      "c": "Gate Current and Gate-Source Voltage",
+      "d": "Drain Current and Substrate Voltage"
+    },
+    "correctAnswer": "b",
+    "difficulty": "beginner"
+  },
+  {
+    "question": "2. When measuring the output characteristics, which quantity is stepped and held constant for each individual curve?",
+    "answers": {
+      "a": "The Drain-Source Voltage",
+      "b": "The Gate-Source Voltage",
+      "c": "The Substrate Voltage",
+      "d": "The Temperature"
+    },
+    "correctAnswer": "b",
+    "difficulty": "beginner"
+  },
+  {
+    "question": "3. The upward slope of the drain current in the 'saturation' region (the 'flat' part of the curve) is modeled by which SPICE parameter?",
+    "answers": {
+      "a": "`VTO` (Threshold Voltage)",
+      "b": "`KP` (Transconductance Parameter)",
+      "c": "`LAMBDA` (Channel-Length Modulation)",
+      "d": "`GAMMA` (Body Effect)"
+    },
+    "correctAnswer": "c",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "4. What physical phenomenon does the `LAMBDA` parameter account for?",
+    "answers": {
+      "a": "The reduction of the effective channel length as drain voltage increases.",
+      "b": "The reduction of carrier mobility at high gate voltage.",
+      "c": "The change in threshold voltage due to substrate bias.",
+      "d": "The leakage current when the device is 'off'."
+    },
+    "correctAnswer": "a",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "5. How is the `LAMBDA` parameter (or the related Early Voltage) graphically determined from the output plot?",
+    "answers": {
+      "a": "By finding the slope in the *linear* region near zero drain voltage.",
+      "b": "By extrapolating the saturation region slopes to a common intercept on the negative voltage axis.",
+      "c": "By measuring the voltage of the 'knee' where saturation begins.",
+      "d": "From the vertical spacing between the different curves."
+    },
+    "correctAnswer": "b",
+    "difficulty": "advanced"
+  },
+  {
+    "question": "6. The *slope* of the output curve in the deep *linear* (or ohmic) region, near zero drain voltage, is primarily used to extract what?",
+    "answers": {
+      "a": "The total 'on-resistance' including parasitic `RD` and `RS`.",
+      "b": "The Early Voltage (`LAMBDA`).",
+      "c": "The Body Effect (`GAMMA`).",
+      "d": "The Threshold Voltage (`VTO`)."
+    },
+    "correctAnswer": "a",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "7. In LEVEL 2 and 3, parameters like `VMAX` are used to model velocity saturation. How does this effect change the *shape* of the output curve compared to the simple LEVEL 1 model?",
+    "answers": {
+      "a": "It makes the saturation slope much steeper.",
+      "b": "It causes the current to saturate at a *lower* drain voltage (the 'knee' moves left).",
+      "c": "It only affects the subthreshold 'off' current.",
+      "d": "It makes the linear region slope steeper."
+    },
+    "correctAnswer": "b",
+    "difficulty": "advanced"
+  },
+  {
+    "question": "8. If the vertical spacing between output curves *decreases* at high gate voltages (for the same constant step in gate voltage), what phenomenon (modeled in LEVEL 3) is this visualizing?",
+    "answers": {
+      "a": "Channel-length modulation",
+      "b": "Body effect",
+      "c": "Mobility degradation",
+      "d": "Subthreshold conduction"
+    },
+    "correctAnswer": "c",
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "9. The region of the plot at low drain voltage, where the current rises with voltage, is known as the:",
+    "answers": {
+      "a": "Saturation region",
+      "b": "Linear (or Triode) region",
+      "c": "Cutoff region",
+      "d": "Breakdown region"
+    },
+    "correctAnswer": "b",
+    "difficulty": "beginner"
+  },
+  {
+    "question": "10. In LEVEL 3 and 6, parasitic drain (`RD`) and source (`RS`) resistances are explicitly modeled because they are needed to accurately fit which part of the curve?",
+    "answers": {
+      "a": "The slope in the saturation region.",
+      "b": "The slope in the linear (ohmic) region.",
+      "c": "The 'off' state leakage current.",
+      "d": "The breakdown voltage."
+    },
+    "correctAnswer": "b",
+    "difficulty": "advanced"
+  }
+
+  ]
+}
